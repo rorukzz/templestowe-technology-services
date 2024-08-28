@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comprehensive Electronics Repair & Custom PC Services</title>
+    <!-- Include Poppins Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Apply Poppins font site-wide */
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+        }
+
+        p, a, button, input, textarea, select, label {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Custom TailwindCSS animation */
+        .fade-in {
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .fade-in-visible {
+            opacity: 1;
+        }
+
+        /* Button hover effect */
+        .hover-scale {
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .hover-scale:hover {
+            transform: scale(1.05);
+        }
+
+        /* Gradient background animation with slower transition */
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .animated-gradient {
+            background: linear-gradient(270deg, #00c6ff, #0072ff, #5a00ff, #ff00a5, #ff6e00);
+            background-size: 800% 800%;
+            animation: gradientShift 15s ease infinite;
+        }
+
+        /* Form focus effect */
+        .focus-effect:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+        }
+
+        /* Testimonials section styling */
+        .testimonial-card {
+            background-color: #f8f9fa;
+            border-left: 4px solid #007bff;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Footer link and icon styling */
+        .footer-link {
+            padding: 0.5rem 1rem;
+            color: #ffffff;
+            transition: color 0.2s ease;
+        }
+
+        .footer-link:hover {
+            color: #1e90ff;
+        }
+
+        .footer-icon {
+            color: #ffffff;
+            margin-right: 15px;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-icon:hover {
+            color: #1e90ff;
+        }
+
+        /* Active section highlighting in header */
+        .nav-link.active {
+            border-bottom: 2px solid #007bff;
+            font-weight: bold;
+            color: #007bff;
+        }
+
+        /* Mobile Navbar Styling */
+        .mobile-menu, .desktop-menu {
+            display: none;
+        }
+
+        @media (min-width: 769px) {
+            .desktop-menu {
+                display: flex;
+            }
+        }
+
+        /* CSS for padding at the top of targeted sections */
+        section:target::before {
+            content: "";
+            display: block;
+            height: 80px;
+            margin-top: -80px;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100 text-gray-900">
+
+    <!-- Hero Section -->
+    <section class="animated-gradient text-white py-20">
+        <div class="container mx-auto text-center">
+            <h1 class="text-5xl font-bold mb-4">Your Trusted Partner for Electronics Repair & Custom PC Solutions</h1>
+            <p class="text-xl mb-8">Expert Repairs, Professional Cleaning, and Custom PC Assembly All in One Place</p>
+            <a href="#quote" class="bg-white text-blue-600 px-6 py-3 rounded-full shadow-lg hover:bg-gray-100 transition hover-scale">Get a Free Quote</a>
+        </div>
+    </section>
+
+    <!-- Header (Sticky Navbar) -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <nav class="container mx-auto flex justify-between items-center p-4">
+            <div class="text-lg font-bold">Your Logo</div>
+            <div class="desktop-menu flex space-x-8">
+                <a href="#services" class="text-gray-700 hover:text-blue-600 nav-link">Services</a>
+                <a href="#quote" class="text-gray-700 hover:text-blue-600 nav-link">Request a Quote</a>
+                <a href="#about" class="text-gray-700 hover:text-blue-600 nav-link">About Us</a>
+                <a href="#testimonials" class="text-gray-700 hover:text-blue-600 nav-link">Testimonials</a>
+                <a href="#faq" class="text-gray-700 hover:text-blue-600 nav-link">FAQs</a>
+                <a href="#contact" class="text-gray-700 hover:text-blue-600 nav-link">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Services Section -->
+    <section id="services" class="py-16 bg-gray-50">
+        <div class="container mx-auto text-center">
+            <h2 class="text-3xl font-semibold mb-8">Our Professional Services</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 fade-in">
+                <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition">
+                    <h3 class="text-xl font-bold mb-4">Repair Services</h3>
+                    <p>Whether it's hardware malfunctions or software issues, our expert technicians provide swift and reliable repair solutions to get your devices back in optimal condition.</p>
+                </div>
+                <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition">
+                    <h3 class="text-xl font-bold mb-4">Cleaning Services</h3>
+                    <p>Our meticulous cleaning services ensure your devices are spotless inside and out, enhancing both performance and longevity.</p>
+                </div>
+                <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition">
+                    <h3 class="text-xl font-bold mb-4">Assembly & Custom PC Building</h3>
+                    <p>From assembling standard electronics to building high-performance gaming and custom PCs, we offer tailored solutions to meet your specific needs and preferences.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quote Form Section -->
+    <section id="quote" class="bg-gray-100 text-gray-900 py-16">
+        <div class="container mx-auto text-center">
+            <h2 class="text-3xl font-semibold mb-8">Request a Quote</h2>
+            <form class="bg-white p-8 rounded-lg shadow-lg text-left max-w-lg mx-auto">
+                <div class="mb-6">
+                    <label class="block text-gray-700 font-bold mb-2">Name</label>
+                    <input type="text" class="w-full p-3 rounded border border-gray-300 focus:ring-2 focus:ring-blue-500 focus-effect">
+                </div>
+                <div class="mb-6">
+                    <label class="block text-gray-700 font-bold mb-2">Email</label>
+                    <input type="email" class="w-full p-3 rounded border border-gray-300 focus:ring-2 focus:ring-blue-500 focus-effect">
+                </div>
+                <div class="mb-6">
+                    <label class="block text-gray-700 font-bold mb-2">Device Type</label>
+                    <input type="text" class="w-full p-3 rounded border border-gray-300 focus:ring-2 focus:ring-blue-500 focus-effect">
+                </div>
+                <div class="mb-6">
+                    <label class="block text-gray-700 font-bold mb-2">Service Needed</label>
+                    <select class="w-full p-3 rounded border border-gray-300 focus:ring-2 focus:ring-blue-500 focus-effect">
+                        <option>Repair</option>
+                        <option>Cleaning</option>
+                        <option>Assembly</option>
+                        <option>Custom PC Build</option>
+                    </select>
+                </div>
+                <div class="mb-6">
+                    <label class="block text-gray-700 font-bold mb-2">Description</label>
+                    <textarea class="w-full p-3 rounded border border-gray-300 focus:ring-2 focus:ring-blue-500 focus-effect" rows="4"></textarea>
+                </div>
+                <button type="submit" class="bg-blue-600 text-white px-6 py-3 rounded shadow-lg hover:bg-blue-700 transition hover-scale">Submit</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about" class="py-16 bg-white">
+        <div class="container mx-auto text-center">
+            <h2 class="text-3xl font-semibold mb-8">About Us</h2>
+            <p class="max-w-2xl mx-auto">With years of experience in the electronics repair industry, our team of professionals is dedicated to delivering fast, reliable, and high-quality services. Whether you need a simple repair, a comprehensive cleaning, or a custom-built gaming PC, we are here to meet your needs with precision and care.</p>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-16 bg-gray-50">
+        <div class="container mx-auto text-center">
+            <h2 class="text-3xl font-semibold mb-8">What Our Customers Say</h2>
+            <div class="fade-in grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="testimonial-card">
+                    <p class="italic">"Outstanding service! My laptop was repaired quickly and efficiently."</p>
+                    <span class="block mt-4 font-bold">- John Doe</span>
+                </div>
+                <div class="testimonial-card">
+                    <p class="italic">"The cleaning service was meticulous. My PC looks and performs like it's brand new."</p>
+                    <span class="block mt-4 font-bold">- Jane Smith</span>
+                </div>
+                <div class="testimonial-card">
+                    <p class="italic">"I couldn't be happier with my custom gaming PC. It was assembled perfectly to my specifications."</p>
+                    <span class="block mt-4 font-bold">- Alex Johnson</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQs Section -->
+    <section id="faq" class="py-16 bg-white">
+        <div class="container mx-auto text-center">
+            <h2 class="text-3xl font-semibold mb-8">Frequently Asked Questions</h2>
+            <div class="text-left max-w-3xl mx-auto">
+                <h3 class="font-bold text-lg">Q: What devices do you repair?</h3>
+                <p class="mb-4">A: We repair a wide range of electronics, including computers, consoles, smartphones, and more.</p>
+                <h3 class="font-bold text-lg">Q: How long does a repair typically take?</h3>
+                <p class="mb-4">A: Repair times vary depending on the issue, but most repairs are completed within 2-3 business days.</p>
+                <h3 class="font-bold text-lg">Q: Do you offer any warranties on your services?</h3>
+                <p>A: Yes, all our repair services come with a 90-day warranty for your peace of mind.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-10">
+        <div class="container mx-auto text-center">
+            <div class="mb-4">
+                <p>For any inquiries or assistance, please don't hesitate to contact us:</p>
+                <p>Email: support@yourbusiness.com</p>
+                <p>Phone: (123) 456-7890</p>
+                <p>Address: 123 Your Street, Your City</p>
+            </div>
+            <div class="mb-4">
+                <a href="#" class="footer-icon"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="footer-icon"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="footer-icon"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="footer-icon"><i class="fab fa-linkedin"></i></a>
+            </div>
+            <p>&copy; 2024 Your Business Name. All rights reserved.</p>
+            <p class="mt-2">
+                <a href="#" class="footer-link">Privacy Policy</a> |
+                <a href="#" class="footer-link">Terms of Service</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Animations and Smooth Scrolling -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Fade-in animations
+            const fadeInElements = document.querySelectorAll('.fade-in');
+            fadeInElements.forEach((el) => {
+                setTimeout(() => {
+                    el.classList.add('fade-in-visible');
+                }, 500);
+            });
+
+            // Smooth scrolling with offset to account for sticky header
+            const links = document.querySelectorAll('a[href^="#"]');
+            const header = document.querySelector('header'); // Get the header element
+            const headerHeight = header.offsetHeight; // Get the height of the header
+
+            links.forEach(link => {
+                link.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+
+                    const elementPosition = targetElement.offsetTop - headerHeight;
+
+                    window.scrollTo({
+                        top: elementPosition,
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+            // Highlight active section in navbar
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - headerHeight - 10; // Adjusting for header height
+                    if (pageYOffset >= sectionTop) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').includes(current)) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+
+</html>
