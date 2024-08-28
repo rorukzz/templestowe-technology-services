@@ -10,7 +10,7 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        /* Apply Poppins font site-wide */
+        /* Typography - Apply Poppins font site-wide */
         body {
             font-family: 'Poppins', sans-serif;
         }
@@ -24,7 +24,7 @@
             font-family: 'Poppins', sans-serif;
         }
 
-        /* Custom TailwindCSS animation */
+        /* Animations */
         .fade-in {
             opacity: 0;
             transition: opacity 1s ease-in-out;
@@ -48,11 +48,9 @@
             0% {
                 background-position: 0% 50%;
             }
-
             50% {
                 background-position: 100% 50%;
             }
-
             100% {
                 background-position: 0% 50%;
             }
@@ -64,13 +62,13 @@
             animation: gradientShift 15s ease infinite;
         }
 
-        /* Form focus effect */
+        /* Form Focus Effect */
         .focus-effect:focus {
             border-color: #007bff;
             box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
         }
 
-        /* Testimonials section styling */
+        /* Card Styles - Used in Testimonials */
         .testimonial-card {
             background-color: #f8f9fa;
             border-left: 4px solid #007bff;
@@ -79,29 +77,43 @@
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
-        /* Footer link and icon styling */
-        .footer-link {
-            padding: 0.5rem 1rem;
+        /* Footer Styling */
+        .footer {
+            background-color: #1a202c;
+            color: #ffffff;
+            padding: 2rem 0;
+        }
+
+        .footer a {
             color: #ffffff;
             transition: color 0.2s ease;
         }
 
-        .footer-link:hover {
+        .footer a:hover {
             color: #1e90ff;
         }
 
-        .footer-icon {
+        .footer .footer-icon {
             color: #ffffff;
             margin-right: 15px;
             font-size: 1.5rem;
             transition: color 0.3s ease;
         }
 
-        .footer-icon:hover {
+        .footer .footer-icon:hover {
             color: #1e90ff;
         }
 
-        /* Active section highlighting in header */
+        .footer .footer-logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        .footer .social-links a {
+            margin: 0 10px;
+        }
+
+        /* Navbar Active Link Styling */
         .nav-link.active {
             border-bottom: 2px solid #007bff;
             font-weight: bold;
@@ -119,17 +131,71 @@
             }
         }
 
-        /* CSS for padding at the top of targeted sections */
+        /* Padding for Targeted Sections */
         section:target::before {
             content: "";
             display: block;
             height: 80px;
             margin-top: -80px;
         }
+
+        /* Back-to-Top Button Styling */
+        #back-to-top {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #007bff;
+            color: #ffffff;
+            border: none;
+            border-radius: 50%;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 18px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+        #back-to-top:hover {
+            background-color: #0056b3;
+        }
+
+        /* Scroll Progress Bar */
+        #progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(to right, #007bff 0%, #1e90ff 100%);
+            z-index: 999;
+            pointer-events: none;
+            transition: width 0.25s ease-in-out;
+        }
+
+        /* Section Title Underline Styling */
+        .section-title {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 2rem;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: #007bff;
+            margin: 8px auto 0;
+            border-radius: 2px;
+        }
     </style>
 </head>
 
 <body class="bg-gray-100 text-gray-900">
+
+    <!-- Scroll Progress Bar -->
+    <div id="progress-bar"></div>
 
     <!-- Hero Section -->
     <section class="animated-gradient text-white py-20">
@@ -158,19 +224,19 @@
     <!-- Services Section -->
     <section id="services" class="py-16 bg-gray-50">
         <div class="container mx-auto text-center">
-            <h2 class="text-3xl font-semibold mb-8">Our Professional Services</h2>
+            <h2 class="section-title text-3xl font-semibold">Our Professional Services</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 fade-in">
-                <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition">
+                <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition hover-scale">
                     <h3 class="text-xl font-bold mb-4">Repair Services</h3>
-                    <p>Whether it's hardware malfunctions or software issues, our expert technicians provide swift and reliable repair solutions to get your devices back in optimal condition.</p>
+                    <p>Expert hardware and software repairs to restore your devices to their peak performance, quickly and reliably.</p>
                 </div>
-                <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition">
+                <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition hover-scale">
                     <h3 class="text-xl font-bold mb-4">Cleaning Services</h3>
-                    <p>Our meticulous cleaning services ensure your devices are spotless inside and out, enhancing both performance and longevity.</p>
+                    <p>Professional cleaning to enhance your device's performance and longevity, ensuring it remains spotless inside and out.</p>
                 </div>
-                <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition">
+                <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition hover-scale">
                     <h3 class="text-xl font-bold mb-4">Assembly & Custom PC Building</h3>
-                    <p>From assembling standard electronics to building high-performance gaming and custom PCs, we offer tailored solutions to meet your specific needs and preferences.</p>
+                    <p>Custom-built PCs tailored to your needs, from standard setups to high-performance gaming systems.</p>
                 </div>
             </div>
         </div>
@@ -179,19 +245,19 @@
     <!-- Quote Form Section -->
     <section id="quote" class="bg-gray-100 text-gray-900 py-16">
         <div class="container mx-auto text-center">
-            <h2 class="text-3xl font-semibold mb-8">Request a Quote</h2>
+            <h2 class="section-title text-3xl font-semibold">Request a Quote</h2>
             <form class="bg-white p-8 rounded-lg shadow-lg text-left max-w-lg mx-auto">
                 <div class="mb-6">
                     <label class="block text-gray-700 font-bold mb-2">Name</label>
-                    <input type="text" class="w-full p-3 rounded border border-gray-300 focus:ring-2 focus:ring-blue-500 focus-effect">
+                    <input type="text" class="w-full p-3 rounded border border-gray-300 focus:ring-2 focus:ring-blue-500 focus-effect" placeholder="Enter your name">
                 </div>
                 <div class="mb-6">
                     <label class="block text-gray-700 font-bold mb-2">Email</label>
-                    <input type="email" class="w-full p-3 rounded border border-gray-300 focus:ring-2 focus:ring-blue-500 focus-effect">
+                    <input type="email" class="w-full p-3 rounded border border-gray-300 focus:ring-2 focus:ring-blue-500 focus-effect" placeholder="Enter your email">
                 </div>
                 <div class="mb-6">
                     <label class="block text-gray-700 font-bold mb-2">Device Type</label>
-                    <input type="text" class="w-full p-3 rounded border border-gray-300 focus:ring-2 focus:ring-blue-500 focus-effect">
+                    <input type="text" class="w-full p-3 rounded border border-gray-300 focus:ring-2 focus:ring-blue-500 focus-effect" placeholder="Enter device type">
                 </div>
                 <div class="mb-6">
                     <label class="block text-gray-700 font-bold mb-2">Service Needed</label>
@@ -204,9 +270,11 @@
                 </div>
                 <div class="mb-6">
                     <label class="block text-gray-700 font-bold mb-2">Description</label>
-                    <textarea class="w-full p-3 rounded border border-gray-300 focus:ring-2 focus:ring-blue-500 focus-effect" rows="4"></textarea>
+                    <textarea class="w-full p-3 rounded border border-gray-300 focus:ring-2 focus:ring-blue-500 focus-effect" rows="4" placeholder="Describe your issue or request"></textarea>
                 </div>
-                <button type="submit" class="bg-blue-600 text-white px-6 py-3 rounded shadow-lg hover:bg-blue-700 transition hover-scale">Submit</button>
+                <button type="submit" class="bg-gradient-to-r from-blue-500 to-blue-700 text-white px-6 py-3 rounded shadow-lg hover:bg-gradient-to-l hover:from-blue-600 hover:to-blue-800 transition hover-scale flex items-center justify-center">
+                    <i class="fas fa-paper-plane mr-2"></i>Submit
+                </button>
             </form>
         </div>
     </section>
@@ -214,7 +282,7 @@
     <!-- About Us Section -->
     <section id="about" class="py-16 bg-white">
         <div class="container mx-auto text-center">
-            <h2 class="text-3xl font-semibold mb-8">About Us</h2>
+            <h2 class="section-title text-3xl font-semibold">About Us</h2>
             <p class="max-w-2xl mx-auto">With years of experience in the electronics repair industry, our team of professionals is dedicated to delivering fast, reliable, and high-quality services. Whether you need a simple repair, a comprehensive cleaning, or a custom-built gaming PC, we are here to meet your needs with precision and care.</p>
         </div>
     </section>
@@ -222,7 +290,7 @@
     <!-- Testimonials Section -->
     <section id="testimonials" class="py-16 bg-gray-50">
         <div class="container mx-auto text-center">
-            <h2 class="text-3xl font-semibold mb-8">What Our Customers Say</h2>
+            <h2 class="section-title text-3xl font-semibold">What Our Customers Say</h2>
             <div class="fade-in grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div class="testimonial-card">
                     <p class="italic">"Outstanding service! My laptop was repaired quickly and efficiently."</p>
@@ -243,7 +311,7 @@
     <!-- FAQs Section -->
     <section id="faq" class="py-16 bg-white">
         <div class="container mx-auto text-center">
-            <h2 class="text-3xl font-semibold mb-8">Frequently Asked Questions</h2>
+            <h2 class="section-title text-3xl font-semibold">Frequently Asked Questions</h2>
             <div class="text-left max-w-3xl mx-auto">
                 <h3 class="font-bold text-lg">Q: What devices do you repair?</h3>
                 <p class="mb-4">A: We repair a wide range of electronics, including computers, consoles, smartphones, and more.</p>
@@ -256,19 +324,20 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-10">
+    <footer class="footer">
         <div class="container mx-auto text-center">
-            <div class="mb-4">
+            <div class="mb-8">
+                <div class="footer-logo">Your Business Name</div>
                 <p>For any inquiries or assistance, please don't hesitate to contact us:</p>
-                <p>Email: support@yourbusiness.com</p>
-                <p>Phone: (123) 456-7890</p>
+                <p>Email: <a href="mailto:support@yourbusiness.com">support@yourbusiness.com</a></p>
+                <p>Phone: <a href="tel:+11234567890">(123) 456-7890</a></p>
                 <p>Address: 123 Your Street, Your City</p>
             </div>
-            <div class="mb-4">
-                <a href="#" class="footer-icon"><i class="fab fa-facebook"></i></a>
-                <a href="#" class="footer-icon"><i class="fab fa-twitter"></i></a>
-                <a href="#" class="footer-icon"><i class="fab fa-instagram"></i></a>
-                <a href="#" class="footer-icon"><i class="fab fa-linkedin"></i></a>
+            <div class="mb-8 social-links">
+                <a href="#" class="footer-icon" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="footer-icon" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="footer-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="footer-icon" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
             </div>
             <p>&copy; 2024 Your Business Name. All rights reserved.</p>
             <p class="mt-2">
@@ -277,6 +346,9 @@
             </p>
         </div>
     </footer>
+
+    <!-- Back-to-Top Button -->
+    <button id="back-to-top" aria-label="Back to Top"><i class="fas fa-chevron-up"></i></button>
 
     <!-- JavaScript for Animations and Smooth Scrolling -->
     <script>
@@ -327,6 +399,28 @@
                     if (link.getAttribute('href').includes(current)) {
                         link.classList.add('active');
                     }
+                });
+
+                // Show/hide back-to-top button
+                const backToTopButton = document.getElementById('back-to-top');
+                if (window.pageYOffset > 300) {
+                    backToTopButton.style.display = 'block';
+                } else {
+                    backToTopButton.style.display = 'none';
+                }
+
+                // Update scroll progress bar
+                const progressBar = document.getElementById('progress-bar');
+                const scrollTotal = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrollProgress = (window.pageYOffset / scrollTotal) * 100;
+                progressBar.style.width = `${scrollProgress}%`;
+            });
+
+            // Scroll back to top
+            document.getElementById('back-to-top').addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
                 });
             });
         });
