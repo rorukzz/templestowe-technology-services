@@ -135,14 +135,16 @@
             background-color: #007bff;
             color: #ffffff;
             border: none;
-            border-radius: 50%;
-            padding: 10px;
+            border-radius: 50%; /* This makes the button round */
+            width: 50px; /* Set equal width and height for a round button */
+            height: 50px;
+            padding: 0; /* Ensure there's no additional padding */
             cursor: pointer;
             font-size: 18px;
             box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
             z-index: 1000;
         }
-
+        
         #back-to-top:hover {
             background-color: #0056b3;
         }
@@ -169,33 +171,79 @@
             top: 0;
             width: 100%;
             height: 100%;
-            overflow: auto;
+            overflow: hidden; /* Prevents scrolling on the body */
             background-color: rgba(0, 0, 0, 0.4);
             padding-top: 60px;
         }
-
+        
         .modal-content {
             background-color: #fefefe;
-            margin: 5% auto;
+            margin: auto;
             padding: 20px;
             border: 1px solid #888;
             width: 80%;
             max-width: 500px;
+            max-height: 80vh; /* Maximum height for the modal */
+            overflow-y: auto; /* Enables scrolling inside the modal */
             border-radius: 10px;
+            scrollbar-width: thin; /* For Firefox */
+            scrollbar-color: rgba(0, 0, 0, 0.2) transparent; /* For Firefox */
         }
-
+        
+        /* Webkit (Chrome, Safari, Edge) */
+        .modal-content::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        .modal-content::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        
+        .modal-content::-webkit-scrollbar-thumb {
+            background-color: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            border: 2px solid transparent;
+            background-clip: content-box;
+        }
+        
+        /* Remove scrollbar arrows */
+        .modal-content::-webkit-scrollbar-button {
+            display: none;
+        }
+        
         .close {
             color: #aaa;
             float: right;
             font-size: 28px;
             font-weight: bold;
         }
-
+        
         .close:hover, .close:focus {
             color: black;
             text-decoration: none;
             cursor: pointer;
         }
+
+        /* Sticky "Request a Quote" Button */
+        .sticky-quote-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #ff6e00;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            z-index: 1001;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .sticky-quote-button:hover {
+            background-color: #e55a00;
+        }
+
     </style>
 </head>
 
@@ -210,16 +258,18 @@
             <h1 class="text-5xl font-bold mb-4">Your Trusted Partner for Electronics Repair & Custom PC Solutions</h1>
             <p class="text-xl mb-8">Expert Repairs, Professional Cleaning, and Custom PC Assembly All in One Place</p>
             <a href="#quote" class="bg-white text-blue-600 px-6 py-3 rounded-full shadow-lg hover:bg-gray-100 transition hover-scale">Get a Free Quote</a>
+            <p class="text-sm mt-4">*We will beat any competitor's price by 5%!</p>
         </div>
     </section>
 
     <!-- Header (Sticky Navbar) -->
     <header class="bg-white shadow-md sticky top-0 z-50">
         <nav class="container mx-auto flex justify-between items-center p-4">
-            <div class="text-lg font-bold">
+            <div class="flex items-center justify-center w-full md:w-auto">
                 <img src="./img/main-logo-no-text.png" alt="Templestowe Technology Services Logo" class="h-12">
+                <span class="ml-3 text-lg font-bold text-gray-700">Templestowe Technology Services</span>
             </div>
-            <div class="desktop-menu flex space-x-8">
+            <div class="desktop-menu hidden md:flex space-x-8">
                 <a href="#services" class="text-gray-700 hover:text-blue-600 nav-link">Services</a>
                 <a href="#quote" class="text-gray-700 hover:text-blue-600 nav-link">Request a Quote</a>
                 <a href="#about" class="text-gray-700 hover:text-blue-600 nav-link">About Us</a>
@@ -229,38 +279,38 @@
         </nav>
     </header>
 
-<!-- Services Section -->
-<section id="services" class="py-16 bg-gray-50">
-    <div class="container mx-auto text-center">
-        <h2 class="text-3xl font-semibold mb-4">Our Professional Services</h2>
-        <div class="flex justify-center items-center mb-8">
-            <div class="h-1 w-16 bg-blue-500 rounded"></div>
+    <!-- Services Section -->
+    <section id="services" class="py-16 bg-gray-50">
+        <div class="container mx-auto text-center">
+            <h2 class="text-3xl font-semibold mb-4">Our Professional Services</h2>
+            <div class="flex justify-center items-center mb-8">
+                <div class="h-1 w-16 bg-blue-500 rounded"></div>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 fade-in">
+                <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition hover-scale">
+                    <div class="text-blue-600 text-3xl mb-4">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Repair Services</h3>
+                    <p>Expert hardware and software repairs to restore your devices to their peak performance, quickly and reliably.</p>
+                </div>
+                <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition hover-scale">
+                    <div class="text-green-600 text-3xl mb-4">
+                        <i class="fas fa-broom"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Cleaning Services</h3>
+                    <p>Professional cleaning to enhance your device's performance and longevity, ensuring it remains spotless inside and out.</p>
+                </div>
+                <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition hover-scale">
+                    <div class="text-red-600 text-3xl mb-4">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Assembly & Custom PC Building</h3>
+                    <p>Custom-built PCs tailored to your needs, from standard setups to high-performance gaming systems.</p>
+                </div>
+            </div>
         </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 fade-in">
-            <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition hover-scale">
-                <div class="text-blue-600 text-3xl mb-4">
-                    <i class="fas fa-tools"></i>
-                </div>
-                <h3 class="text-xl font-bold mb-4">Repair Services</h3>
-                <p>Expert hardware and software repairs to restore your devices to their peak performance, quickly and reliably.</p>
-            </div>
-            <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition hover-scale">
-                <div class="text-green-600 text-3xl mb-4">
-                    <i class="fas fa-broom"></i>
-                </div>
-                <h3 class="text-xl font-bold mb-4">Cleaning Services</h3>
-                <p>Professional cleaning to enhance your device's performance and longevity, ensuring it remains spotless inside and out.</p>
-            </div>
-            <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition hover-scale">
-                <div class="text-red-600 text-3xl mb-4">
-                    <i class="fas fa-laptop-code"></i>
-                </div>
-                <h3 class="text-xl font-bold mb-4">Assembly & Custom PC Building</h3>
-                <p>Custom-built PCs tailored to your needs, from standard setups to high-performance gaming systems.</p>
-            </div>
-        </div>
-    </div>
-</section>
+    </section>
 
     <!-- Quote Form Section -->
     <section id="quote" class="bg-gray-100 text-gray-900 py-16">
@@ -269,22 +319,26 @@
             <div class="flex justify-center items-center mb-8">
                 <div class="h-1 w-16 bg-blue-500 rounded"></div>
             </div>
-            <form class="bg-white p-8 rounded-lg shadow-lg text-left max-w-lg mx-auto">
+            <!-- Add a success message placeholder -->
+            <div id="form-message" class="text-center text-green-600 font-semibold mb-4 hidden"></div>
+            
+            <!-- Update form action to use your Formspree endpoint -->
+            <form id="quote-form" class="bg-white p-8 rounded-lg shadow-lg text-left max-w-lg mx-auto" method="POST" action="https://formspree.io/f/xqazngzr">
                 <div class="mb-6 relative">
                     <label class="block text-gray-700 font-bold mb-2">Name</label>
-                    <input type="text" class="w-full p-3 rounded border border-gray-300 focus:ring-2 focus:ring-blue-500 focus-effect" placeholder="Enter your name">
+                    <input type="text" name="name" class="w-full p-3 rounded border border-gray-300 focus:ring-2 focus:ring-blue-500 focus-effect" placeholder="Enter your name" required>
                 </div>
                 <div class="mb-6 relative">
                     <label class="block text-gray-700 font-bold mb-2">Email</label>
-                    <input type="email" class="w-full p-3 rounded border border-gray-300 focus:ring-2 focus:ring-blue-500 focus-effect" placeholder="Enter your email">
+                    <input type="email" name="email" class="w-full p-3 rounded border border-gray-300 focus:ring-2 focus:ring-blue-500 focus-effect" placeholder="Enter your email" required>
                 </div>
                 <div class="mb-6 relative">
                     <label class="block text-gray-700 font-bold mb-2">Device Type</label>
-                    <input type="text" class="w-full p-3 rounded border border-gray-300 focus:ring-2 focus:ring-blue-500 focus-effect" placeholder="Enter device type">
+                    <input type="text" name="device" class="w-full p-3 rounded border border-gray-300 focus:ring-2 focus:ring-blue-500 focus-effect" placeholder="Enter device type" required>
                 </div>
                 <div class="mb-6 relative">
                     <label class="block text-gray-700 font-bold mb-2">Service Needed</label>
-                    <select class="w-full p-3 rounded border border-gray-300 focus:ring-2 focus:ring-blue-500 focus-effect">
+                    <select name="service" class="w-full p-3 rounded border border-gray-300 focus:ring-2 focus:ring-blue-500 focus-effect" required>
                         <option>Repair</option>
                         <option>Cleaning</option>
                         <option>Assembly</option>
@@ -293,7 +347,7 @@
                 </div>
                 <div class="mb-6 relative">
                     <label class="block text-gray-700 font-bold mb-2">Description</label>
-                    <textarea class="w-full p-3 rounded border border-gray-300 focus:ring-2 focus:ring-blue-500 focus-effect" rows="4" placeholder="Describe your issue or request"></textarea>
+                    <textarea name="description" class="w-full p-3 rounded border border-gray-300 focus:ring-2 focus:ring-blue-500 focus-effect" rows="4" placeholder="Describe your issue or request" required></textarea>
                 </div>
                 <button type="submit" class="bg-gradient-to-r from-blue-500 to-blue-700 text-white px-6 py-3 rounded shadow-lg hover:bg-gradient-to-l hover:from-blue-600 hover:to-blue-800 transition hover-scale flex items-center justify-center">
                     <i class="fas fa-paper-plane mr-2"></i>Submit
@@ -310,6 +364,7 @@
                 <div class="h-1 w-16 bg-blue-500 rounded"></div>
             </div>
             <p class="max-w-2xl mx-auto">With years of experience in the electronics repair industry, our team of professionals is dedicated to delivering fast, reliable, and high-quality services. Whether you need a simple repair, a comprehensive cleaning, or a custom-built gaming PC, we are here to meet your needs with precision and care.</p>
+            <p class="max-w-2xl mx-auto mt-4">Founded out of a passion for technology, Templestowe Technology Services has grown from a small local business to a trusted name in electronics repair and custom PC building. Our team is committed to staying on the cutting edge of technology, ensuring that we can offer the best solutions to our customers.</p>
         </div>
     </section>
 
@@ -320,16 +375,16 @@
             <div class="flex justify-center items-center mb-8">
                 <div class="h-1 w-16 bg-blue-500 rounded"></div>
             </div>
-            <div class="fade-in grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="testimonial-card">
+            <div class="fade-in grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-4">
+                <div class="testimonial-card p-4">
                     <p class="italic">"Outstanding service! My laptop was repaired quickly and efficiently."</p>
                     <span class="block mt-4 font-bold">- John Doe</span>
                 </div>
-                <div class="testimonial-card">
+                <div class="testimonial-card p-4">
                     <p class="italic">"The cleaning service was meticulous. My PC looks and performs like it's brand new."</p>
                     <span class="block mt-4 font-bold">- Jane Smith</span>
                 </div>
-                <div class="testimonial-card">
+                <div class="testimonial-card p-4">
                     <p class="italic">"I couldn't be happier with my custom gaming PC. It was assembled perfectly to my specifications."</p>
                     <span class="block mt-4 font-bold">- Alex Johnson</span>
                 </div>
@@ -344,13 +399,13 @@
             <div class="flex justify-center items-center mb-8">
                 <div class="h-1 w-16 bg-blue-500 rounded"></div>
             </div>
-            <div class="text-left max-w-3xl mx-auto">
-                <h3 class="font-bold text-lg">Q: What devices do you repair?</h3>
-                <p class="mb-4">A: We repair a wide range of electronics, including computers, consoles, smartphones, and more.</p>
-                <h3 class="font-bold text-lg">Q: How long does a repair typically take?</h3>
-                <p class="mb-4">A: Repair times vary depending on the issue, but most repairs are completed within 2-3 business days.</p>
-                <h3 class="font-bold text-lg">Q: Do you offer any warranties on your services?</h3>
-                <p>A: Yes, all our repair services come with a 90-day warranty for your peace of mind.</p>
+            <div class="text-left max-w-3xl mx-auto px-4 md:px-0">
+                <h3 class="font-bold text-lg text-center md:text-left">Q: What devices do you repair?</h3>
+                <p class="mb-4 text-center md:text-left">A: We repair a wide range of electronics, including computers, consoles, smartphones, and more.</p>
+                <h3 class="font-bold text-lg text-center md:text-left">Q: How long does a repair typically take?</h3>
+                <p class="mb-4 text-center md:text-left">A: Repair times vary depending on the issue, but most repairs are completed within 2-3 business days.</p>
+                <h3 class="font-bold text-lg text-center md:text-left">Q: Do you offer any warranties on your services?</h3>
+                <p class="text-center md:text-left">A: Yes, all our repair services come with a 90-day warranty for your peace of mind.</p>
             </div>
         </div>
     </section>
@@ -386,6 +441,7 @@
 
     <!-- Back-to-Top Button -->
     <button id="back-to-top" aria-label="Back to Top"><i class="fas fa-chevron-up"></i></button>
+
 
     <!-- JavaScript for Animations, Smooth Scrolling, and Modal -->
     <script>
@@ -526,7 +582,6 @@
             modal.style.display = 'block';
         });
 
-
             document.getElementById('terms-service').addEventListener('click', function () {
             modalTitle.textContent = 'Terms of Service';
             modalContent.innerHTML = `
@@ -546,7 +601,7 @@
                     </ul>
                 
                     <h3 class="text-xl font-semibold mb-4">Payments and Pricing</h3>
-                    <p class="mb-4">All prices for our services are clearly listed and communicated before any work begins. Payment is due upon completion of the service, and we accept various payment methods, including credit/debit cards, bank transfers, and cash.</p>
+                    <p class="mb-4">To initiate any service, a deposit of 50% of the total quoted price is required upfront. The remaining balance is due upon completion of the job, before the item is returned to the customer. We accept various payment methods, including credit/debit cards, bank transfers, and cash. Please note, the deposit is fully refundable if we are unable to deliver the service as promised. However, deposits will not be refunded in cases where issues arise due to customer actions, such as failure to collect the item within the agreed time frame or providing incorrect information. We appreciate your understanding and cooperation in ensuring a smooth service process.</p>
                 
                     <h3 class="text-xl font-semibold mb-4">Warranties and Guarantees</h3>
                     <p class="mb-4">We offer a 90-day warranty on all repair services, which covers any defects in parts or workmanship. This warranty does not cover issues caused by misuse, accidental damage, or unauthorized modifications.</p>
@@ -583,6 +638,7 @@
             window.addEventListener('click', function (event) {
                 if (event.target == modal) {
                     modal.style.display = 'none';
+                    document.body.style.overflow = 'auto'; // Enable body scrolling
                 }
             });
         });
@@ -602,6 +658,42 @@
 
         // Listen for changes in the color scheme
         window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', updateFavicon);
+
+        document.getElementById('quote-form').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent the default form submission
+    
+    const form = event.target;
+    const formData = new FormData(form);
+    const formMessage = document.getElementById('form-message');
+
+    fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        headers: {
+            'Accept': 'application/json'
+        }
+    }).then(response => {
+        if (response.ok) {
+            formMessage.textContent = 'Your message has been sent successfully!';
+            formMessage.classList.remove('hidden');
+            formMessage.classList.add('block');
+            
+            setTimeout(() => {
+                formMessage.classList.remove('block');
+                formMessage.classList.add('hidden');
+                location.reload(); // Refresh the page after 3 seconds
+            }, 3000);
+        } else {
+            formMessage.textContent = 'Oops! There was a problem submitting your form.';
+            formMessage.classList.remove('hidden');
+            formMessage.classList.add('block');
+        }
+    }).catch(error => {
+        formMessage.textContent = 'Oops! There was a problem submitting your form.';
+        formMessage.classList.remove('hidden');
+        formMessage.classList.add('block');
+    });
+});
     </script>
 
 </body>
